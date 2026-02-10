@@ -104,7 +104,7 @@ const Layout = ({ children }) => {
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
-                            className={`md:hidden border-t overflow-hidden ${step === 'mood' ? 'glass-effect border-[var(--gold)]/20 shadow-lg' : 'dark-glass border-white/5 shadow-2xll'}`}
+                            className={`md:hidden border-t overflow-hidden ${step === 'mood' ? 'glass-effect border-[var(--gold)]/20 shadow-lg' : 'dark-glass border-white/5 shadow-2xl'}`}
                         >
                             <div className="flex flex-col p-4 gap-2">
                                 {navLinks.map((link) => (
@@ -115,13 +115,13 @@ const Layout = ({ children }) => {
                                             setIsMenuOpen(false);
                                             window.scrollTo({ top: 0, behavior: 'smooth' });
                                         }}
-                                        className={`flex items-center justify-between px-6 py-4 rounded-2xl text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 ${step === link.id
+                                        className={`flex items-center justify-between px-5 py-3.5 rounded-2xl text-[9px] font-black tracking-[0.2em] uppercase transition-all duration-300 ${step === link.id
                                             ? (step === 'mood' ? 'bg-[var(--mahogany)] text-white' : 'bg-[var(--amber)] text-[var(--charcoal)]')
                                             : (step === 'mood' ? 'text-[var(--charcoal)]/60 hover:bg-black/5' : 'text-white/40 hover:bg-white/5')
                                             }`}
                                     >
                                         <span>{link.label}</span>
-                                        {step === link.id && <span className="text-lg">✨</span>}
+                                        {step === link.id && <span className="text-sm">✨</span>}
                                     </button>
                                 ))}
                             </div>
@@ -145,31 +145,31 @@ const Layout = ({ children }) => {
             </main>
 
             {/* Premium Footer */}
-            <footer className={`transition-colors duration-1000 py-16 md:py-20 px-4 relative z-10 border-t ${step === 'mood' ? 'bg-[var(--ivory)] border-[var(--gold)]/10' : 'bg-[var(--charcoal)] border-white/5 shadow-inner'
+            <footer className={`transition-colors duration-1000 py-12 md:py-20 px-4 relative z-10 border-t ${step === 'mood' ? 'bg-[var(--ivory)] border-[var(--gold)]/10' : 'bg-[var(--charcoal)] border-white/5 shadow-inner'
                 }`}>
-                <div className="max-w-7xl mx-auto flex flex-col items-center text-center space-y-8 md:space-y-12">
+                <div className="max-w-7xl mx-auto flex flex-col items-center text-center space-y-6 md:space-y-12">
                     <div className="flex flex-col items-center">
-                        <h3 className={`display-font text-3xl md:text-5xl font-black mb-2 transition-colors duration-500 ${step === 'mood' ? 'text-[var(--mahogany)]' : 'text-white'
+                        <h3 className={`display-font text-2xl md:text-5xl font-black mb-2 transition-colors duration-500 ${step === 'mood' ? 'text-[var(--mahogany)]' : 'text-white'
                             }`}>Mixology Master</h3>
-                        <div className="w-16 md:w-24 h-1 bg-gradient-to-r from-transparent via-[var(--amber)] to-transparent" />
+                        <div className="w-12 md:w-24 h-1 bg-gradient-to-r from-transparent via-[var(--amber)] to-transparent" />
                     </div>
 
-                    <p className={`max-w-lg transition-colors duration-500 font-serif italic text-base md:text-lg px-4 ${step === 'mood' ? 'text-gray-500' : 'text-white/40'
+                    <p className={`max-w-lg transition-colors duration-500 font-serif italic text-sm md:text-lg px-4 ${step === 'mood' ? 'text-gray-500' : 'text-white/40'
                         }`}>
                         "Crafting perfect moments, one molecular synthesis at a time. Discover the art of the perfect pour."
                     </p>
 
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-10">
+                    <div className="flex flex-wrap justify-center gap-4 md:gap-10">
                         {['Press', 'Legal', 'Privacy', 'Heritage'].map(link => (
-                            <a key={link} href="#" className={`text-[9px] md:text-[10px] font-bold uppercase tracking-[0.4em] transition-colors ${step === 'mood' ? 'text-[var(--charcoal)]/30 hover:text-[var(--mahogany)]' : 'text-white/20 hover:text-[var(--amber)]'
+                            <a key={link} href="#" className={`text-[8px] md:text-[10px] font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] transition-colors ${step === 'mood' ? 'text-[var(--charcoal)]/30 hover:text-[var(--mahogany)]' : 'text-white/20 hover:text-[var(--amber)]'
                                 }`}>{link}</a>
                         ))}
                     </div>
 
-                    <div className="space-y-4">
-                        <div className={`text-[9px] md:text-[10px] uppercase font-black tracking-[0.4em] md:tracking-[0.6em] transition-colors ${step === 'mood' ? 'text-gray-300' : 'text-white/5'
+                    <div className="space-y-3">
+                        <div className={`text-[8px] md:text-[10px] uppercase font-black tracking-[0.3em] md:tracking-[0.6em] transition-colors ${step === 'mood' ? 'text-gray-300' : 'text-white/5'
                             }`}>© 2024 Mixology Master Pro • Geneva Labs</div>
-                        <p className={`text-[8px] md:text-[9px] uppercase tracking-[0.2em] font-bold transition-colors ${step === 'mood' ? 'text-red-900/40' : 'text-[var(--amber)]/40'
+                        <p className={`text-[7px] md:text-[9px] uppercase tracking-[0.2em] font-bold transition-colors ${step === 'mood' ? 'text-red-900/40' : 'text-[var(--amber)]/40'
                             }`}>Please Enjoy Responsibly • 21+</p>
                     </div>
                 </div>

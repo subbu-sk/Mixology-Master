@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setTaste, setStep } from '../features/cocktail/cocktailSlice';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
-import { Sliders, Zap, Droplets, Flame, Wind } from 'lucide-react';
+import { Sliders, Zap, Droplets, Flame, Wind, Sparkles } from 'lucide-react';
 
 const TastePreference = () => {
     const { taste } = useSelector((state) => state.cocktail);
@@ -37,7 +37,7 @@ const TastePreference = () => {
             </div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <header className="text-center mb-10 md:mb-16 space-y-4">
+                <header className="text-center mb-6 md:mb-16 space-y-4">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -48,26 +48,26 @@ const TastePreference = () => {
                     <motion.h2
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="display-font text-5xl md:text-7xl font-bold text-white italic px-4"
+                        className="display-font text-3xl sm:text-5xl md:text-7xl font-bold text-white italic px-4 uppercase tracking-tighter sm:tracking-normal"
                     >
                         Refine the <span className="text-gradient">Essence</span>
                     </motion.h2>
                 </header>
 
-                <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 md:gap-12 items-start">
+                <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 md:gap-12 items-start">
                     {/* Left Side: Fine Tuning Controls */}
                     <div className="xl:col-span-12 2xl:col-span-5 space-y-6 w-full max-w-2xl mx-auto xl:max-w-none">
                         <motion.div
                             initial={{ opacity: 0, x: -50 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="dark-glass p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem]"
+                            className="dark-glass p-5 md:p-10 rounded-[2rem] md:rounded-[2.5rem]"
                         >
-                            <h3 className="text-[var(--gold)] text-xs font-bold uppercase tracking-[0.3em] mb-8 md:mb-10 flex items-center gap-3">
+                            <h3 className="text-[var(--gold)] text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] mb-6 md:mb-10 flex items-center gap-3">
                                 <Sliders size={18} />
                                 Taste Modulation
                             </h3>
 
-                            <div className="space-y-8 md:space-y-10">
+                            <div className="space-y-6 md:space-y-10">
                                 {sliders.map((slider, idx) => (
                                     <motion.div
                                         key={slider.name}
@@ -78,14 +78,14 @@ const TastePreference = () => {
                                     >
                                         <div className="flex justify-between items-end">
                                             <div className="flex items-center gap-3">
-                                                <div className="p-2 rounded-lg bg-white/5 text-[var(--amber)]">
+                                                <div className="p-1.5 md:p-2 rounded-lg bg-white/5 text-[var(--amber)]">
                                                     {slider.icon}
                                                 </div>
-                                                <label className="text-white/80 font-bold uppercase tracking-widest text-[10px] md:text-xs">
+                                                <label className="text-white/80 font-bold uppercase tracking-widest text-[9px] md:text-xs">
                                                     {slider.label}
                                                 </label>
                                             </div>
-                                            <span className="font-mono text-[var(--amber)] font-black text-lg md:text-xl">
+                                            <span className="font-mono text-[var(--amber)] font-black text-base md:text-xl">
                                                 {taste[slider.name]}%
                                             </span>
                                         </div>
@@ -117,7 +117,7 @@ const TastePreference = () => {
                                     dispatch(setStep('ingredients'));
                                     window.scrollTo({ top: 0, behavior: 'smooth' });
                                 }}
-                                className="w-full mt-10 md:mt-12 bg-gradient-to-r from-[var(--amber)] to-[var(--gold)] text-[var(--charcoal)] py-5 rounded-2xl font-black uppercase tracking-[0.3em] shadow-2xl shadow-[var(--amber)]/20 hover:shadow-[0_0_30px_var(--amber)] transition-all duration-500 active:scale-95"
+                                className="w-full mt-8 md:mt-12 bg-gradient-to-r from-[var(--amber)] to-[var(--gold)] text-[var(--charcoal)] py-4 md:py-5 rounded-2xl font-black uppercase tracking-[0.3em] shadow-2xl shadow-[var(--amber)]/20 hover:shadow-[0_0_30px_var(--amber)] transition-all duration-500 active:scale-95 text-xs md:text-base"
                             >
                                 Lock in Profile
                             </motion.button>
@@ -129,7 +129,7 @@ const TastePreference = () => {
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="dark-glass p-6 md:p-12 rounded-[2rem] md:rounded-[2.5rem] relative overflow-hidden h-full flex flex-col justify-center min-h-[400px] md:min-h-[500px]"
+                            className="dark-glass p-5 md:p-12 rounded-[2rem] md:rounded-[2.5rem] relative overflow-hidden h-full flex flex-col justify-center min-h-[350px] md:min-h-[500px]"
                         >
                             {/* Technical Overlay */}
                             <div className="absolute top-0 left-0 w-full h-full pointer-events-none hidden sm:block">
@@ -139,19 +139,19 @@ const TastePreference = () => {
                                 <div className="absolute bottom-8 right-8 border-r border-b border-white/20 w-8 h-8" />
                             </div>
 
-                            <div className="relative z-10 text-center space-y-6">
+                            <div className="relative z-10 text-center space-y-4 md:space-y-6">
                                 <div className="flex flex-col items-center">
-                                    <h4 className="text-[var(--gold)] text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] opacity-40 mb-4 italic">Spectral Analysis</h4>
+                                    <h4 className="text-[var(--gold)] text-[9px] md:text-xs font-bold uppercase tracking-[0.4em] opacity-40 mb-4 italic">Spectral Analysis</h4>
                                     <div className="w-20 h-0.5 bg-gradient-to-r from-transparent via-[var(--amber)] to-transparent" />
                                 </div>
 
-                                <div className="h-[300px] sm:h-[400px] md:h-[450px] w-full">
+                                <div className="h-[250px] sm:h-[400px] md:h-[450px] w-full">
                                     <ResponsiveContainer width="100%" height="100%">
                                         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
                                             <PolarGrid stroke="rgba(255,255,255,0.05)" strokeDasharray="5 5" />
                                             <PolarAngleAxis
                                                 dataKey="subject"
-                                                tick={{ fill: 'rgba(255,255,255,0.6)', fontSize: 10, fontWeight: 700, letterSpacing: '0.2em' }}
+                                                tick={{ fill: 'rgba(255,255,255,0.6)', fontSize: 8, fontWeight: 700, letterSpacing: '0.1em' }}
                                             />
                                             <PolarRadiusAxis
                                                 angle={30}
@@ -177,14 +177,14 @@ const TastePreference = () => {
                                     </ResponsiveContainer>
                                 </div>
 
-                                <div className="flex justify-center gap-12">
+                                <div className="flex justify-center gap-6 md:gap-12">
                                     <div className="text-center">
-                                        <div className="text-[10px] text-white/30 font-bold uppercase tracking-widest mb-1">Stability</div>
-                                        <div className="text-[var(--gold)] font-mono font-black text-lg">98.4%</div>
+                                        <div className="text-[9px] text-white/30 font-bold uppercase tracking-widest mb-1">Stability</div>
+                                        <div className="text-[var(--gold)] font-mono font-black text-sm md:text-lg">98.4%</div>
                                     </div>
                                     <div className="text-center">
-                                        <div className="text-[10px] text-white/30 font-bold uppercase tracking-widest mb-1">Complexity</div>
-                                        <div className="text-[var(--gold)] font-mono font-black text-lg">HIGH</div>
+                                        <div className="text-[9px] text-white/30 font-bold uppercase tracking-widest mb-1">Complexity</div>
+                                        <div className="text-[var(--gold)] font-mono font-black text-sm md:text-lg uppercase">High</div>
                                     </div>
                                 </div>
                             </div>
@@ -195,25 +195,5 @@ const TastePreference = () => {
         </div>
     );
 };
-
-const Sparkles = ({ size, className }) => (
-    <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-    >
-        <path d="m12 3-1.912 5.813a2.01 2.01 0 0 1-1.275 1.275L3 12l5.813 1.912a2.01 2.01 0 0 1 1.275 1.275L12 21l1.912-5.813a2.01 2.01 0 0 1 1.275-1.275L21 12l-5.813-1.912a2.01 2.01 0 0 1-1.275-1.275L12 3Z" />
-        <path d="M5 3v4" />
-        <path d="M19 17v4" />
-        <path d="M3 5h4" />
-        <path d="M17 19h4" />
-    </svg>
-);
 
 export default TastePreference;

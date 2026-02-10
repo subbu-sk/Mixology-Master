@@ -35,7 +35,7 @@ const CocktailResult = () => {
             <div className="absolute bottom-[20%] right-[10%] w-[40%] h-[40%] bg-[var(--mahogany)]/5 blur-[120px] rounded-full" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <header className="text-center mb-10 md:mb-20 space-y-4">
+                <header className="text-center mb-8 md:mb-20 space-y-4">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -46,38 +46,38 @@ const CocktailResult = () => {
                     <motion.h2
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="display-font text-5xl md:text-8xl font-bold text-white italic px-4"
+                        className="display-font text-3xl sm:text-5xl md:text-8xl font-bold text-white italic px-4 uppercase tracking-tighter md:tracking-normal"
                     >
                         Behold your <span className="text-gradient">Masterpiece</span>
                     </motion.h2>
                 </header>
 
-                <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 md:gap-16">
+                <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 md:gap-16">
 
                     {/* Left Side: The Reveal */}
-                    <div className="xl:col-span-12 2xl:col-span-5 space-y-8 md:space-y-12">
+                    <div className="xl:col-span-12 2xl:col-span-5 space-y-6 md:space-y-12">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             className="relative group"
                         >
-                            <div className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.6)] border-[8px] md:border-[12px] border-white/5 bg-white/5 p-3 md:p-4 backdrop-blur-xl transition-all duration-700 hover:shadow-[0_40px_120px_var(--amber)]/10">
+                            <div className="relative rounded-[2rem] md:rounded-[4rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.6)] border-[6px] md:border-[12px] border-white/5 bg-white/5 p-2 md:p-4 backdrop-blur-xl transition-all duration-700 hover:shadow-[0_40px_120px_var(--amber)]/10">
                                 <img
                                     src="/resources/final-cocktail.png"
                                     alt="Result"
-                                    className="w-full h-[400px] md:h-[600px] object-cover rounded-[2rem] md:rounded-[3rem] transition-transform duration-1000 group-hover:scale-105"
+                                    className="w-full h-[300px] md:h-[600px] object-cover rounded-[1.5rem] md:rounded-[3rem] transition-transform duration-1000 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--charcoal)] via-transparent to-transparent opacity-80" />
 
-                                <div className="absolute bottom-6 left-6 right-6 md:bottom-12 md:left-12 md:right-12 space-y-4 md:space-y-6">
-                                    <div className="space-y-2">
-                                        <h1 className="display-font text-4xl m:text-5xl md:text-7xl font-black text-white leading-tight">{cocktailName}</h1>
-                                        <div className="flex items-center gap-4">
-                                            <div className="flex items-center gap-1.5 bg-[var(--amber)] text-[var(--charcoal)] px-4 py-1.5 rounded-full font-black text-sm shadow-xl">
-                                                <Star className="fill-[var(--charcoal)]" size={14} strokeWidth={3} />
+                                <div className="absolute bottom-4 left-4 right-4 md:bottom-12 md:left-12 md:right-12 space-y-3 md:space-y-6">
+                                    <div className="space-y-1 md:space-y-2">
+                                        <h1 className="display-font text-2xl sm:text-5xl md:text-7xl font-black text-white leading-tight uppercase">{cocktailName}</h1>
+                                        <div className="flex items-center gap-3 md:gap-4">
+                                            <div className="flex items-center gap-1.5 bg-[var(--amber)] text-[var(--charcoal)] px-3 py-1 md:px-4 md:py-1.5 rounded-full font-black text-[10px] md:text-sm shadow-xl">
+                                                <Star className="fill-[var(--charcoal)] w-3 h-3 md:w-3.5 md:h-3.5" strokeWidth={3} />
                                                 <span>{rating}</span>
                                             </div>
-                                            <span className="text-[var(--gold)]/40 text-[8px] md:text-[10px] uppercase font-black tracking-[0.4em]">Bartender Signature Mix</span>
+                                            <span className="text-[var(--gold)]/40 text-[7px] md:text-[10px] uppercase font-black tracking-[0.2em] md:tracking-[0.4em]">Signature Mix</span>
                                         </div>
                                     </div>
                                 </div>
@@ -85,54 +85,54 @@ const CocktailResult = () => {
                         </motion.div>
 
                         {/* Analysis Grid */}
-                        <div className="grid grid-cols-2 gap-4 md:gap-6">
+                        <div className="grid grid-cols-2 gap-3 md:gap-6">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4 }}
-                                className="dark-glass p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] flex flex-col items-center justify-center space-y-3 md:space-y-4 text-center"
+                                className="dark-glass p-5 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] flex flex-col items-center justify-center space-y-2 md:space-y-4 text-center"
                             >
-                                <Award className="text-[var(--amber)] mb-2" size={28} md:size={32} />
+                                <Award className="text-[var(--amber)] mb-1 w-6 h-6 md:w-8 md:h-8" />
                                 <div>
-                                    <div className="text-[var(--gold)]/30 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.3em] mb-1">Status</div>
-                                    <div className="text-white font-black text-base md:text-lg tracking-widest italic uppercase">Flawless</div>
+                                    <div className="text-[var(--gold)]/30 text-[7px] md:text-[9px] font-bold uppercase tracking-[0.3em] mb-1">Status</div>
+                                    <div className="text-white font-black text-xs md:text-lg tracking-widest italic uppercase">Flawless</div>
                                 </div>
                             </motion.div>
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5 }}
-                                className="dark-glass p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] flex flex-col items-center justify-center space-y-3 md:space-y-4 text-center"
+                                className="dark-glass p-5 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] flex flex-col items-center justify-center space-y-2 md:space-y-4 text-center"
                             >
-                                <Clock className="text-[var(--amber)] mb-2" size={28} md:size={32} />
+                                <Clock className="text-[var(--amber)] mb-1 w-6 h-6 md:w-8 md:h-8" />
                                 <div>
-                                    <div className="text-[var(--gold)]/30 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.3em] mb-1">Prep Time</div>
-                                    <div className="text-white font-black text-base md:text-lg tracking-widest italic uppercase">3:45 MIN</div>
+                                    <div className="text-[var(--gold)]/30 text-[7px] md:text-[9px] font-bold uppercase tracking-[0.3em] mb-1">Prep Time</div>
+                                    <div className="text-white font-black text-xs md:text-lg tracking-widest italic uppercase">3:45 MIN</div>
                                 </div>
                             </motion.div>
                         </div>
                     </div>
 
                     {/* Right Side: The Data Blueprint */}
-                    <div className="xl:col-span-12 2xl:col-span-7 space-y-8 md:space-y-12">
+                    <div className="xl:col-span-12 2xl:col-span-7 space-y-6 md:space-y-12">
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="dark-glass p-6 md:p-12 rounded-[2.5rem] md:rounded-[4rem] space-y-12 md:space-y-16"
+                            className="dark-glass p-5 md:p-12 rounded-[2rem] md:rounded-[4rem] space-y-10 md:space-y-16"
                         >
                             {/* Flavor Equilibrium Chart */}
-                            <section className="space-y-6 md:space-y-8">
+                            <section className="space-y-4 md:space-y-8">
                                 <div className="flex justify-between items-end">
-                                    <h3 className="text-[var(--gold)] text-xs font-bold uppercase tracking-[0.4em] mb-2 flex items-center gap-3 italic">
-                                        <Thermometer size={16} />
+                                    <h3 className="text-[var(--gold)] text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] md:tracking-[0.4em] mb-2 flex items-center gap-2 italic">
+                                        <Thermometer className="w-3.5 h-3.5 md:w-4 md:h-4" />
                                         Spectral Equilibrium
                                     </h3>
                                 </div>
-                                <div className="h-[250px] sm:h-[350px] w-full bg-white/5 rounded-[2rem] md:rounded-[3rem] p-4 md:p-8 border border-white/5">
+                                <div className="h-[250px] sm:h-[350px] w-full bg-white/5 rounded-[1.5rem] md:rounded-[3rem] p-2 md:p-8 border border-white/5">
                                     <ResponsiveContainer width="100%" height="100%">
                                         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={chartData}>
                                             <PolarGrid stroke="rgba(255,255,255,0.05)" />
-                                            <PolarAngleAxis dataKey="subject" tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 10, fontWeight: 700 }} />
+                                            <PolarAngleAxis dataKey="subject" tick={{ fill: 'rgba(255,255,255,0.4)', fontSize: 8, fontWeight: 700 }} />
                                             <PolarRadiusAxis domain={[0, 100]} tick={false} axisLine={false} />
                                             <Radar
                                                 name="Harmony"

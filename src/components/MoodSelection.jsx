@@ -63,11 +63,11 @@ const MoodSelection = () => {
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="display-font text-5xl sm:text-7xl md:text-8xl font-bold mb-6"
+                        className="display-font text-4xl sm:text-7xl md:text-8xl font-bold mb-6"
                     >
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--amber)] to-[var(--gold)]">Craft</span>
-                        <span className="block">Perfect</span>
-                        <span className="block script-font text-4xl sm:text-6xl md:text-7xl">Cocktails</span>
+                        <span className="block italic">Perfect</span>
+                        <span className="block script-font text-3xl sm:text-6xl md:text-7xl">Cocktails</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 30 }}
@@ -99,7 +99,7 @@ const MoodSelection = () => {
                             viewport={{ once: true }}
                             className="flex-1 space-y-6 md:space-y-8 text-center lg:text-left"
                         >
-                            <h2 className="display-font text-4xl m:text-5xl md:text-6xl font-black text-[var(--charcoal)] leading-tight uppercase">
+                            <h2 className="display-font text-3xl sm:text-5xl md:text-6xl font-black text-[var(--charcoal)] leading-tight uppercase">
                                 The Master's <br /><span className="text-[var(--amber)] italic">Collection</span>
                             </h2>
                             <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-lg mx-auto lg:mx-0">
