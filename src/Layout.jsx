@@ -6,6 +6,7 @@ import { resetCocktail, setStep } from './features/cocktail/cocktailSlice';
 const Layout = ({ children }) => {
     const step = useSelector((state) => state.cocktail.step);
     const dispatch = useDispatch();
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const navLinks = [
         { id: 'mood', label: 'Mood' },
@@ -16,7 +17,7 @@ const Layout = ({ children }) => {
 
     return (
         <div className="min-h-screen bg-[var(--ivory)] selection:bg-[var(--amber)] selection:text-white">
-            {/* Global Background (Mood-Aware later potentially) */}
+            {/* Global Background */}
             <div className={`fixed inset-0 pointer-events-none transition-colors duration-1000 ${step === 'mood' ? 'bg-[var(--ivory)]' : 'bg-[var(--charcoal)]'
                 }`} />
 
@@ -26,7 +27,7 @@ const Layout = ({ children }) => {
                 : 'dark-glass border-white/5 shadow-2xl'
                 }`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center h-24">
+                    <div className="flex justify-between items-center h-20 md:h-24">
                         {/* Logo */}
                         <div
                             className="flex items-center cursor-pointer group shrink-0"
@@ -35,17 +36,17 @@ const Layout = ({ children }) => {
                                 window.scrollTo({ top: 0, behavior: 'smooth' });
                             }}
                         >
-                            <span className="text-4xl mr-3 group-hover:rotate-12 transition-transform duration-300 drop-shadow-lg">🍸</span>
+                            <span className="text-3xl md:text-4xl mr-3 group-hover:rotate-12 transition-transform duration-300 drop-shadow-lg">🍸</span>
                             <div className="flex flex-col">
-                                <h1 className={`display-font text-2xl font-black uppercase tracking-[0.2em] transition-colors duration-500 ${step === 'mood' ? 'text-[var(--mahogany)]' : 'text-white'
+                                <h1 className={`display-font text-lg md:text-2xl font-black uppercase tracking-[0.2em] transition-colors duration-500 ${step === 'mood' ? 'text-[var(--mahogany)]' : 'text-white'
                                     }`}>
                                     Mixology <span className="font-light text-[var(--amber)] italic">Master</span>
                                 </h1>
-                                <span className="text-[8px] font-bold uppercase tracking-[0.6em] text-[var(--amber)] opacity-50">Est. 2024 • Artisanal</span>
+                                <span className="text-[6px] md:text-[8px] font-bold uppercase tracking-[0.4em] md:tracking-[0.6em] text-[var(--amber)] opacity-50">Est. 2024 • Artisanal</span>
                             </div>
                         </div>
 
-                        {/* Navigation Links */}
+                        {/* Navigation Links - Desktop */}
                         <div className="hidden md:block">
                             <div className="flex items-center space-x-2">
                                 {navLinks.map((link) => (
@@ -76,17 +77,57 @@ const Layout = ({ children }) => {
                             </div>
                         </div>
 
-                        {/* Mobile Status */}
-                        <div className="md:hidden flex items-center">
-                            <div className={`px-5 py-2 rounded-full text-[10px] font-black tracking-widest uppercase transition-colors duration-500 ${step === 'mood'
+                        {/* Mobile Controls */}
+                        <div className="md:hidden flex items-center gap-3">
+                            <div className={`px-4 py-1.5 rounded-full text-[8px] md:text-[10px] font-black tracking-widest uppercase transition-colors duration-500 ${step === 'mood'
                                 ? 'bg-[var(--mahogany)] text-white'
                                 : 'bg-[var(--amber)] text-[var(--charcoal)] shadow-xl shadow-[var(--amber)]/20'
                                 }`}>
-                                {step === 'mood' ? 'Mood Selection' : `Step: ${step}`}
+                                {step === 'mood' ? 'Focus' : step}
                             </div>
+                            <button
+                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                className={`p-2 rounded-lg transition-colors ${step === 'mood' ? 'text-[var(--mahogany)] bg-black/5' : 'text-white bg-white/5'}`}
+                            >
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                                    {isMenuOpen ? <path d="M18 6L6 18M6 6l12 12" /> : <path d="M3 12h18M3 6h18M3 18h18" />}
+                                </svg>
+                            </button>
                         </div>
                     </div>
                 </div>
+
+                {/* Mobile Menu Overlay */}
+                <AnimatePresence>
+                    {isMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className={`md:hidden border-t overflow-hidden ${step === 'mood' ? 'glass-effect border-[var(--gold)]/20 shadow-lg' : 'dark-glass border-white/5 shadow-2xll'}`}
+                        >
+                            <div className="flex flex-col p-4 gap-2">
+                                {navLinks.map((link) => (
+                                    <button
+                                        key={link.id}
+                                        onClick={() => {
+                                            dispatch(setStep(link.id));
+                                            setIsMenuOpen(false);
+                                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                                        }}
+                                        className={`flex items-center justify-between px-6 py-4 rounded-2xl text-[10px] font-black tracking-[0.3em] uppercase transition-all duration-300 ${step === link.id
+                                            ? (step === 'mood' ? 'bg-[var(--mahogany)] text-white' : 'bg-[var(--amber)] text-[var(--charcoal)]')
+                                            : (step === 'mood' ? 'text-[var(--charcoal)]/60 hover:bg-black/5' : 'text-white/40 hover:bg-white/5')
+                                            }`}
+                                    >
+                                        <span>{link.label}</span>
+                                        {step === link.id && <span className="text-lg">✨</span>}
+                                    </button>
+                                ))}
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </nav>
 
             <main className="relative z-10">
@@ -104,31 +145,31 @@ const Layout = ({ children }) => {
             </main>
 
             {/* Premium Footer */}
-            <footer className={`transition-colors duration-1000 py-20 px-4 relative z-10 border-t ${step === 'mood' ? 'bg-[var(--ivory)] border-[var(--gold)]/10' : 'bg-[var(--charcoal)] border-white/5 shadow-inner'
+            <footer className={`transition-colors duration-1000 py-16 md:py-20 px-4 relative z-10 border-t ${step === 'mood' ? 'bg-[var(--ivory)] border-[var(--gold)]/10' : 'bg-[var(--charcoal)] border-white/5 shadow-inner'
                 }`}>
-                <div className="max-w-7xl mx-auto flex flex-col items-center text-center space-y-12">
+                <div className="max-w-7xl mx-auto flex flex-col items-center text-center space-y-8 md:space-y-12">
                     <div className="flex flex-col items-center">
-                        <h3 className={`display-font text-5xl font-black mb-2 transition-colors duration-500 ${step === 'mood' ? 'text-[var(--mahogany)]' : 'text-white'
+                        <h3 className={`display-font text-3xl md:text-5xl font-black mb-2 transition-colors duration-500 ${step === 'mood' ? 'text-[var(--mahogany)]' : 'text-white'
                             }`}>Mixology Master</h3>
-                        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[var(--amber)] to-transparent" />
+                        <div className="w-16 md:w-24 h-1 bg-gradient-to-r from-transparent via-[var(--amber)] to-transparent" />
                     </div>
 
-                    <p className={`max-w-lg transition-colors duration-500 font-serif italic text-lg ${step === 'mood' ? 'text-gray-500' : 'text-white/40'
+                    <p className={`max-w-lg transition-colors duration-500 font-serif italic text-base md:text-lg px-4 ${step === 'mood' ? 'text-gray-500' : 'text-white/40'
                         }`}>
                         "Crafting perfect moments, one molecular synthesis at a time. Discover the art of the perfect pour."
                     </p>
 
-                    <div className="flex gap-10">
+                    <div className="flex flex-wrap justify-center gap-6 md:gap-10">
                         {['Press', 'Legal', 'Privacy', 'Heritage'].map(link => (
-                            <a key={link} href="#" className={`text-[10px] font-bold uppercase tracking-[0.4em] transition-colors ${step === 'mood' ? 'text-[var(--charcoal)]/30 hover:text-[var(--mahogany)]' : 'text-white/20 hover:text-[var(--amber)]'
+                            <a key={link} href="#" className={`text-[9px] md:text-[10px] font-bold uppercase tracking-[0.4em] transition-colors ${step === 'mood' ? 'text-[var(--charcoal)]/30 hover:text-[var(--mahogany)]' : 'text-white/20 hover:text-[var(--amber)]'
                                 }`}>{link}</a>
                         ))}
                     </div>
 
                     <div className="space-y-4">
-                        <div className={`text-[10px] uppercase font-black tracking-[0.6em] transition-colors ${step === 'mood' ? 'text-gray-300' : 'text-white/5'
+                        <div className={`text-[9px] md:text-[10px] uppercase font-black tracking-[0.4em] md:tracking-[0.6em] transition-colors ${step === 'mood' ? 'text-gray-300' : 'text-white/5'
                             }`}>© 2024 Mixology Master Pro • Geneva Labs</div>
-                        <p className={`text-[9px] uppercase tracking-[0.2em] font-bold transition-colors ${step === 'mood' ? 'text-red-900/40' : 'text-[var(--amber)]/40'
+                        <p className={`text-[8px] md:text-[9px] uppercase tracking-[0.2em] font-bold transition-colors ${step === 'mood' ? 'text-red-900/40' : 'text-[var(--amber)]/40'
                             }`}>Please Enjoy Responsibly • 21+</p>
                     </div>
                 </div>

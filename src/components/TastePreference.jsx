@@ -37,7 +37,7 @@ const TastePreference = () => {
             </div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <header className="text-center mb-16 space-y-4">
+                <header className="text-center mb-10 md:mb-16 space-y-4">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -48,26 +48,26 @@ const TastePreference = () => {
                     <motion.h2
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="display-font text-6xl md:text-7xl font-bold text-white italic"
+                        className="display-font text-5xl md:text-7xl font-bold text-white italic px-4"
                     >
                         Refine the <span className="text-gradient">Essence</span>
                     </motion.h2>
                 </header>
 
-                <div className="grid grid-cols-1 xl:grid-cols-12 gap-12 items-start">
+                <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 md:gap-12 items-start">
                     {/* Left Side: Fine Tuning Controls */}
-                    <div className="xl:col-span-5 space-y-6">
+                    <div className="xl:col-span-12 2xl:col-span-5 space-y-6 w-full max-w-2xl mx-auto xl:max-w-none">
                         <motion.div
                             initial={{ opacity: 0, x: -50 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="dark-glass p-10 rounded-[2.5rem]"
+                            className="dark-glass p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem]"
                         >
-                            <h3 className="text-[var(--gold)] text-xs font-bold uppercase tracking-[0.3em] mb-10 flex items-center gap-3">
+                            <h3 className="text-[var(--gold)] text-xs font-bold uppercase tracking-[0.3em] mb-8 md:mb-10 flex items-center gap-3">
                                 <Sliders size={18} />
                                 Taste Modulation
                             </h3>
 
-                            <div className="space-y-10">
+                            <div className="space-y-8 md:space-y-10">
                                 {sliders.map((slider, idx) => (
                                     <motion.div
                                         key={slider.name}
@@ -81,15 +81,15 @@ const TastePreference = () => {
                                                 <div className="p-2 rounded-lg bg-white/5 text-[var(--amber)]">
                                                     {slider.icon}
                                                 </div>
-                                                <label className="text-white/80 font-bold uppercase tracking-widest text-xs">
+                                                <label className="text-white/80 font-bold uppercase tracking-widest text-[10px] md:text-xs">
                                                     {slider.label}
                                                 </label>
                                             </div>
-                                            <span className="font-mono text-[var(--amber)] font-black text-xl">
+                                            <span className="font-mono text-[var(--amber)] font-black text-lg md:text-xl">
                                                 {taste[slider.name]}%
                                             </span>
                                         </div>
-                                        <div className="relative group">
+                                        <div className="relative group px-1">
                                             <input
                                                 type="range"
                                                 name={slider.name}
@@ -98,12 +98,12 @@ const TastePreference = () => {
                                                 step="1"
                                                 value={taste[slider.name]}
                                                 onChange={handleChange}
-                                                className="w-full h-1 bg-white/10 rounded-full appearance-none cursor-pointer accent-[var(--amber)] group-hover:bg-white/20 transition-all"
+                                                className="w-full h-1.5 bg-white/10 rounded-full appearance-none cursor-pointer accent-[var(--amber)] group-hover:bg-white/20 transition-all touch-none"
                                             />
                                             {/* Stylized Slider Track Overlay */}
                                             <div
-                                                className="absolute top-1/2 -translate-y-1/2 left-0 h-1 bg-gradient-to-r from-[var(--mahogany)] to-[var(--amber)] rounded-full pointer-events-none"
-                                                style={{ width: `${taste[slider.name]}%` }}
+                                                className="absolute top-1/2 -translate-y-1/2 left-1 h-1.5 bg-gradient-to-r from-[var(--mahogany)] to-[var(--amber)] rounded-full pointer-events-none"
+                                                style={{ width: `calc(${taste[slider.name]}% - 8px)` }}
                                             />
                                         </div>
                                     </motion.div>
@@ -111,13 +111,13 @@ const TastePreference = () => {
                             </div>
 
                             <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
                                 onClick={() => {
                                     dispatch(setStep('ingredients'));
                                     window.scrollTo({ top: 0, behavior: 'smooth' });
                                 }}
-                                className="w-full mt-12 bg-gradient-to-r from-[var(--amber)] to-[var(--gold)] text-[var(--charcoal)] py-5 rounded-2xl font-black uppercase tracking-[0.3em] shadow-2xl shadow-[var(--amber)]/20 hover:shadow-[0_0_30px_var(--amber)] transition-all duration-500"
+                                className="w-full mt-10 md:mt-12 bg-gradient-to-r from-[var(--amber)] to-[var(--gold)] text-[var(--charcoal)] py-5 rounded-2xl font-black uppercase tracking-[0.3em] shadow-2xl shadow-[var(--amber)]/20 hover:shadow-[0_0_30px_var(--amber)] transition-all duration-500 active:scale-95"
                             >
                                 Lock in Profile
                             </motion.button>
@@ -125,14 +125,14 @@ const TastePreference = () => {
                     </div>
 
                     {/* Right Side: Visual Projection */}
-                    <div className="xl:col-span-7 h-full">
+                    <div className="xl:col-span-12 2xl:col-span-7 h-full w-full max-w-2xl mx-auto xl:max-w-none">
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="dark-glass p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden h-full flex flex-col justify-center min-h-[500px]"
+                            className="dark-glass p-6 md:p-12 rounded-[2rem] md:rounded-[2.5rem] relative overflow-hidden h-full flex flex-col justify-center min-h-[400px] md:min-h-[500px]"
                         >
                             {/* Technical Overlay */}
-                            <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+                            <div className="absolute top-0 left-0 w-full h-full pointer-events-none hidden sm:block">
                                 <div className="absolute top-8 left-8 border-l border-t border-white/20 w-8 h-8" />
                                 <div className="absolute top-8 right-8 border-r border-t border-white/20 w-8 h-8" />
                                 <div className="absolute bottom-8 left-8 border-l border-b border-white/20 w-8 h-8" />
@@ -141,11 +141,11 @@ const TastePreference = () => {
 
                             <div className="relative z-10 text-center space-y-6">
                                 <div className="flex flex-col items-center">
-                                    <h4 className="text-[var(--gold)] text-xs font-bold uppercase tracking-[0.4em] opacity-40 mb-4 italic">Spectral Analysis</h4>
+                                    <h4 className="text-[var(--gold)] text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] opacity-40 mb-4 italic">Spectral Analysis</h4>
                                     <div className="w-20 h-0.5 bg-gradient-to-r from-transparent via-[var(--amber)] to-transparent" />
                                 </div>
 
-                                <div className="h-[450px] w-full">
+                                <div className="h-[300px] sm:h-[400px] md:h-[450px] w-full">
                                     <ResponsiveContainer width="100%" height="100%">
                                         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
                                             <PolarGrid stroke="rgba(255,255,255,0.05)" strokeDasharray="5 5" />

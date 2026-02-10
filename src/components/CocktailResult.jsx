@@ -35,7 +35,7 @@ const CocktailResult = () => {
             <div className="absolute bottom-[20%] right-[10%] w-[40%] h-[40%] bg-[var(--mahogany)]/5 blur-[120px] rounded-full" />
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <header className="text-center mb-20 space-y-4">
+                <header className="text-center mb-10 md:mb-20 space-y-4">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -46,38 +46,38 @@ const CocktailResult = () => {
                     <motion.h2
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
-                        className="display-font text-6xl md:text-8xl font-bold text-white italic"
+                        className="display-font text-5xl md:text-8xl font-bold text-white italic px-4"
                     >
                         Behold your <span className="text-gradient">Masterpiece</span>
                     </motion.h2>
                 </header>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                <div className="grid grid-cols-1 xl:grid-cols-12 gap-8 md:gap-16">
 
                     {/* Left Side: The Reveal */}
-                    <div className="lg:col-span-12 xl:col-span-5 space-y-12">
+                    <div className="xl:col-span-12 2xl:col-span-5 space-y-8 md:space-y-12">
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
                             animate={{ opacity: 1, scale: 1 }}
                             className="relative group"
                         >
-                            <div className="relative rounded-[4rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.6)] border-[12px] border-white/5 bg-white/5 p-4 backdrop-blur-xl transition-all duration-700 hover:shadow-[0_40px_120px_var(--amber)]/10">
+                            <div className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-[0_40px_100px_rgba(0,0,0,0.6)] border-[8px] md:border-[12px] border-white/5 bg-white/5 p-3 md:p-4 backdrop-blur-xl transition-all duration-700 hover:shadow-[0_40px_120px_var(--amber)]/10">
                                 <img
                                     src="/resources/final-cocktail.png"
                                     alt="Result"
-                                    className="w-full h-[600px] object-cover rounded-[3rem] transition-transform duration-1000 group-hover:scale-105"
+                                    className="w-full h-[400px] md:h-[600px] object-cover rounded-[2rem] md:rounded-[3rem] transition-transform duration-1000 group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--charcoal)] via-transparent to-transparent opacity-80" />
 
-                                <div className="absolute bottom-12 left-12 right-12 space-y-6">
+                                <div className="absolute bottom-6 left-6 right-6 md:bottom-12 md:left-12 md:right-12 space-y-4 md:space-y-6">
                                     <div className="space-y-2">
-                                        <h1 className="display-font text-6xl md:text-7xl font-black text-white leading-tight">{cocktailName}</h1>
+                                        <h1 className="display-font text-4xl m:text-5xl md:text-7xl font-black text-white leading-tight">{cocktailName}</h1>
                                         <div className="flex items-center gap-4">
                                             <div className="flex items-center gap-1.5 bg-[var(--amber)] text-[var(--charcoal)] px-4 py-1.5 rounded-full font-black text-sm shadow-xl">
                                                 <Star className="fill-[var(--charcoal)]" size={14} strokeWidth={3} />
                                                 <span>{rating}</span>
                                             </div>
-                                            <span className="text-[var(--gold)]/40 text-[10px] uppercase font-black tracking-[0.4em]">Bartender Signature Mix</span>
+                                            <span className="text-[var(--gold)]/40 text-[8px] md:text-[10px] uppercase font-black tracking-[0.4em]">Bartender Signature Mix</span>
                                         </div>
                                     </div>
                                 </div>
@@ -85,50 +85,50 @@ const CocktailResult = () => {
                         </motion.div>
 
                         {/* Analysis Grid */}
-                        <div className="grid grid-cols-2 gap-6">
+                        <div className="grid grid-cols-2 gap-4 md:gap-6">
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.4 }}
-                                className="dark-glass p-8 rounded-[2.5rem] flex flex-col items-center justify-center space-y-4 text-center"
+                                className="dark-glass p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] flex flex-col items-center justify-center space-y-3 md:space-y-4 text-center"
                             >
-                                <Award className="text-[var(--amber)] mb-2" size={32} />
+                                <Award className="text-[var(--amber)] mb-2" size={28} md:size={32} />
                                 <div>
-                                    <div className="text-[var(--gold)]/30 text-[9px] font-bold uppercase tracking-[0.3em] mb-1">Status</div>
-                                    <div className="text-white font-black text-lg tracking-widest italic uppercase">Flawless</div>
+                                    <div className="text-[var(--gold)]/30 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.3em] mb-1">Status</div>
+                                    <div className="text-white font-black text-base md:text-lg tracking-widest italic uppercase">Flawless</div>
                                 </div>
                             </motion.div>
                             <motion.div
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: 0.5 }}
-                                className="dark-glass p-8 rounded-[2.5rem] flex flex-col items-center justify-center space-y-4 text-center"
+                                className="dark-glass p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] flex flex-col items-center justify-center space-y-3 md:space-y-4 text-center"
                             >
-                                <Clock className="text-[var(--amber)] mb-2" size={32} />
+                                <Clock className="text-[var(--amber)] mb-2" size={28} md:size={32} />
                                 <div>
-                                    <div className="text-[var(--gold)]/30 text-[9px] font-bold uppercase tracking-[0.3em] mb-1">Prep Time</div>
-                                    <div className="text-white font-black text-lg tracking-widest italic uppercase">3:45 MIN</div>
+                                    <div className="text-[var(--gold)]/30 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.3em] mb-1">Prep Time</div>
+                                    <div className="text-white font-black text-base md:text-lg tracking-widest italic uppercase">3:45 MIN</div>
                                 </div>
                             </motion.div>
                         </div>
                     </div>
 
                     {/* Right Side: The Data Blueprint */}
-                    <div className="lg:col-span-12 xl:col-span-7 space-y-12">
+                    <div className="xl:col-span-12 2xl:col-span-7 space-y-8 md:space-y-12">
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
                             animate={{ opacity: 1, x: 0 }}
-                            className="dark-glass p-12 rounded-[4rem] space-y-16"
+                            className="dark-glass p-6 md:p-12 rounded-[2.5rem] md:rounded-[4rem] space-y-12 md:space-y-16"
                         >
                             {/* Flavor Equilibrium Chart */}
-                            <section className="space-y-8">
+                            <section className="space-y-6 md:space-y-8">
                                 <div className="flex justify-between items-end">
                                     <h3 className="text-[var(--gold)] text-xs font-bold uppercase tracking-[0.4em] mb-2 flex items-center gap-3 italic">
                                         <Thermometer size={16} />
                                         Spectral Equilibrium
                                     </h3>
                                 </div>
-                                <div className="h-[350px] w-full bg-white/5 rounded-[3rem] p-8 border border-white/5">
+                                <div className="h-[250px] sm:h-[350px] w-full bg-white/5 rounded-[2rem] md:rounded-[3rem] p-4 md:p-8 border border-white/5">
                                     <ResponsiveContainer width="100%" height="100%">
                                         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={chartData}>
                                             <PolarGrid stroke="rgba(255,255,255,0.05)" />
@@ -148,26 +148,26 @@ const CocktailResult = () => {
                             </section>
 
                             {/* Ingredient Breakdown */}
-                            <section className="space-y-8">
+                            <section className="space-y-6 md:space-y-8">
                                 <h3 className="text-[var(--gold)] text-xs font-bold uppercase tracking-[0.4em] mb-6 flex items-center gap-3 italic">
                                     <BookOpen size={16} />
                                     The Ingredients
                                 </h3>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                                     {ingredients.map((item, i) => (
                                         <motion.div
                                             key={i}
                                             initial={{ opacity: 0, x: 20 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: 0.6 + i * 0.1 }}
-                                            className="flex items-center gap-5 p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-[var(--gold)]/20 transition-all group"
+                                            className="flex items-center gap-4 md:gap-5 p-3 md:p-4 bg-white/5 rounded-2xl border border-white/5 hover:border-[var(--gold)]/20 transition-all group"
                                         >
-                                            <div className="w-14 h-14 bg-white rounded-2xl p-2 shadow-xl group-hover:scale-110 transition-transform">
+                                            <div className="w-12 h-12 md:w-14 md:h-14 bg-white rounded-xl md:rounded-2xl p-2 shadow-xl group-hover:scale-110 transition-transform">
                                                 <img src={item.img} alt={item.name} className="w-full h-full object-contain" />
                                             </div>
                                             <div>
-                                                <h4 className="font-bold text-white tracking-wide">{item.name}</h4>
-                                                <p className="text-[9px] text-[var(--amber)] font-black uppercase tracking-widest">{item.desc}</p>
+                                                <h4 className="font-bold text-white tracking-wide text-sm md:text-base">{item.name}</h4>
+                                                <p className="text-[8px] md:text-[9px] text-[var(--amber)] font-black uppercase tracking-widest">{item.desc}</p>
                                             </div>
                                         </motion.div>
                                     ))}
@@ -175,12 +175,12 @@ const CocktailResult = () => {
                             </section>
 
                             {/* Interactive Actions */}
-                            <footer className="pt-8 flex flex-wrap gap-4">
+                            <footer className="pt-4 md:pt-8 flex flex-col sm:flex-row gap-4">
                                 <motion.button
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
                                     onClick={() => dispatch(resetCocktail())}
-                                    className="flex-1 min-w-[200px] flex items-center justify-center gap-3 bg-white text-[var(--charcoal)] px-10 py-5 rounded-full text-sm font-black uppercase tracking-[0.3em] hover:bg-[var(--gold)] transition-all shadow-[0_10px_40px_rgba(255,255,255,0.1)] active:scale-95"
+                                    className="flex-1 min-w-[200px] flex items-center justify-center gap-3 bg-white text-[var(--charcoal)] px-8 py-4 md:px-10 md:py-5 rounded-full text-xs md:text-sm font-black uppercase tracking-[0.3em] hover:bg-[var(--gold)] transition-all shadow-[0_10px_40px_rgba(255,255,255,0.1)] active:scale-95"
                                 >
                                     <RefreshCw size={18} strokeWidth={3} />
                                     New Synthesis
@@ -188,7 +188,7 @@ const CocktailResult = () => {
                                 <motion.button
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="p-5 rounded-full bg-[var(--charcoal)] text-white border-2 border-white/10 hover:border-[var(--amber)] hover:text-[var(--amber)] transition-all flex items-center justify-center shrink-0 shadow-xl"
+                                    className="p-4 md:p-5 rounded-full bg-[var(--charcoal)] text-white border-2 border-white/10 hover:border-[var(--amber)] hover:text-[var(--amber)] transition-all flex items-center justify-center shrink-0 shadow-xl"
                                     onClick={() => alert('Recipe stored in Local Archives.')}
                                 >
                                     <Share2 size={24} />
